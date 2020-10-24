@@ -1,0 +1,23 @@
+body {
+  background-color: black;
+}
+
+.timer-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20% auto 0;
+}
+
+.timer {
+  font-size: 5rem;
+  color: white;
+}
+
+.label {
+  color: white;
+}
+
+
+/*# sourceMappingURL=/timer.e31bb0bc.css.map */
