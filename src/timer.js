@@ -1,7 +1,7 @@
-import '../src/style.css';
+// import '../src/style.css';
 
 export const timerVision = () => {
-  document.addEventListener("DOMContentLoaded", () => {
+  // document.addEventListener("load", () => {
     const audio = document.getElementById('audio');
     const timer = document.querySelector('.timer');
     const input = document.querySelector('.time-input');
@@ -40,5 +40,5 @@ export const timerVision = () => {
     }
     
     playBtn.addEventListener('click', playTimer);
-  })
+  // })
 }
