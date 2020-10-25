@@ -1,4 +1,6 @@
 import './src/style.css';
 import { timerVision } from './src/timer';
 
-timerVision();
+document.addEventListener("DOMContentLoaded", () => {
+  timerVision();
+})
