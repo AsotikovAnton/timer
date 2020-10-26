@@ -18,3 +18,9 @@ body {
 .label {
   color: white;
 }
+
+#button-addon2 {
+  width: 5rem;
+  height: 3rem;
+  font-size: 1.5em;
+}
