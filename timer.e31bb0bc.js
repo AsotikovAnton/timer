@@ -3,4 +3,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{}],"Focm":[function(require,module,exports) {
 "use strict";var r=require("./src/timer");(0,r.timerVision)();
 },{"./src/timer":"UKGC"}]},{},["Focm"], null)
-//# sourceMappingURL=/timer.ae15f9b5.js.map
+//# sourceMappingURL=/timer/timer.e31bb0bc.js.map
