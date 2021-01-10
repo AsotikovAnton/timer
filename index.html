@@ -9,6 +9,10 @@
 </head>
 <body>
   <div class="timer-app container">
+    <div class="row custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="customSwitch1">
+      <label class="custom-control-label" for="customSwitch1">Тема</label>
+    </div>
     <div class="row">
       <label class="label ml-3" for="time-input">Общее кол-во секунд для точки и дали</label>
       <div class="input-group mb-3 ml-3 mr-3">
@@ -26,6 +30,7 @@
     </div>
     <div class="input-group-append">
       <button class="btn btn-primary" type="button" id="button-addon2">Go</button>
+      <button class="btn btn-warning" type="button" id="pause">Pause</button>
     </div>
   </div>
   <audio id="audio-start" src="/src/start.mp3"></audio>
