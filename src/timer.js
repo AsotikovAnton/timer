@@ -1,42 +1,66 @@
 export const timerVision = () => {
   const audio = document.getElementById('audio');
   const audioStart = document.getElementById('audio-start');
+  const audioFinish = document.getElementById('audio-finish');
   const timer = document.querySelector('.timer');
-  const input = document.querySelector('.time-input');
+  const timeInput = document.querySelector('.time-input');
   const playBtn = document.getElementById('button-addon2');
   const pauseBtn = document.getElementById('pause');
   const themeBtn = document.getElementById('customSwitch1');
+  const iterationsInput = document.getElementById('iterations-input');
+  const iterations = document.querySelector('.remaining-iterations');
   
+  
+  iterations.textContent = 0;
   timer.textContent = 60;
-  input.value = 60;
+  timeInput.value = 60;
   let paused = false;
 
   const playTimer = () => {
     playAudioStart();
-    if (!paused) timer.textContent = input.value;
+    if (!paused) timer.textContent = timeInput.value;
 
     if (paused) {
       paused = false;
       pauseBtn.disabled = false;
     }
     
-    input.disabled = true;
+    timeInput.disabled = true;
     playBtn.disabled = true;
+    
+    // if (iterations.textContent > 0) {
+    //   iterations.textContent--;
+    // }
+    // if (iterations.textContent == 0) {
+    //   iterations.textContent = 'Это финиш';
+    //   playAudioFinish();
+    // }
 
     let timerInterval = setInterval(() => {
       if (timer.textContent > 0) {
         timer.textContent--;
       }
 
-      if (timer.textContent == Math.ceil(input.value / 2)) {
-        playAudio();
+      if (timer.textContent == Math.ceil(timeInput.value / 2)) {
+        playAudioEnd();
       }
 
-      if (timer.textContent < 1) {
-        playAudio();
+      if (timer.textContent == 0) {
         clearInterval(timerInterval);
-        input.disabled = false;
+        timeInput.disabled = false;
         playBtn.disabled = false;
+
+        if (iterations.textContent > 0) {
+          iterations.textContent--;
+          playAudioEnd();
+        }
+        
+        if (iterations.textContent == 0) {
+          playBtn.disabled = true;
+          pauseBtn.disabled = true;
+          iterations.textContent = 'Конец';
+          playAudioFinish();
+        }
       }
       
       pauseBtn.addEventListener('click', () => {
@@ -48,21 +72,26 @@ export const timerVision = () => {
     }, 1000);
   };
 
-  const playAudio = () => {
-    audio.play();
-    audio.currentTime = 0.0;
-  };
-
   const playAudioStart = () => {
     audioStart.play();
     audioStart.currentTime = 0.0;
   };
+
+  const playAudioEnd = () => {
+    audio.play();
+    audio.currentTime = 0.0;
+  };
+  
+  const playAudioFinish = () => {
+    audioFinish.play();
+    audioFinish.currentTime = 0.0;
+  };
   
   const changeTheme = () => {
     document.body.classList.toggle('light');
-    console.log('click');
   }
 
+  iterationsInput.addEventListener('change', () => {iterations.textContent = iterationsInput.value});
   playBtn.addEventListener('click', playTimer);
   themeBtn.addEventListener('click', changeTheme);
 };
