@@ -1,6 +1,7 @@
 export const timerVision = () => {
   const audio = document.getElementById('audio');
   const audioStart = document.getElementById('audio-start');
+  const audioHalfTime = document.getElementById('audio-half-time');
   const audioFinish = document.getElementById('audio-finish');
   const timer = document.querySelector('.timer');
   const timeInput = document.querySelector('.time-input');
@@ -27,14 +28,6 @@ export const timerVision = () => {
     
     timeInput.disabled = true;
     playBtn.disabled = true;
-    
-    // if (iterations.textContent > 0) {
-    //   iterations.textContent--;
-    // }
-    // if (iterations.textContent == 0) {
-    //   iterations.textContent = 'Это финиш';
-    //   playAudioFinish();
-    // }
 
     let timerInterval = setInterval(() => {
       if (timer.textContent > 0) {
@@ -53,6 +46,10 @@ export const timerVision = () => {
         if (iterations.textContent > 0) {
           iterations.textContent--;
           playAudioEnd();
+        }
+
+        if (iterations.textContent == Math.ceil(timeInput.value / 2)) {
+          playAudioHalfTime();
         }
         
         if (iterations.textContent == 0) {
@@ -81,6 +78,11 @@ export const timerVision = () => {
     audio.play();
     audio.currentTime = 0.0;
   };
+
+  const playAudioHalfTime = () => {
+    audioHalfTime.play();
+    audioHalfTime.currentTime = 0.0;
+  }
   
   const playAudioFinish = () => {
     audioFinish.play();

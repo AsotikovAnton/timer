@@ -15,7 +15,7 @@
     </div>
     <div class="d-flex flex-column mb-3 w-100">
       <div>
-        <label class="label" for="time-input">Общее кол-во итераций</label>
+        <label class="label" for="time-input">Общее кол-во итераций для обоих глаз</label>
         <div class="input-group">
           <input
             type="number"
@@ -39,6 +39,7 @@
             id="time-input"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
+            placeholder="Введите количество секунд"
           >
         </div>
       </div>
@@ -51,6 +52,7 @@
   </div>
   <audio id="audio-start" src="/src/start.mp3"></audio>
   <audio id="audio" src="/src/end.mp3"></audio>
+  <audio id="audio-half-time" src="/src/tuturu.mp3"></audio>
   <audio id="audio-finish" src="/src/tada.mp3"></audio>
   <script src="./index.js"></script>
 </body>
