@@ -1,5 +1,5 @@
 export const timerVision = () => {
-  const audio = document.getElementById('audio');
+  const audioEnd = document.getElementById('audio');
   const audioStart = document.getElementById('audio-start');
   const audioHalfTime = document.getElementById('audio-half-time');
   const audioFinish = document.getElementById('audio-finish');
@@ -11,14 +11,22 @@ export const timerVision = () => {
   const iterationsInput = document.getElementById('iterations-input');
   const iterations = document.querySelector('.remaining-iterations');
   
-  
   iterations.textContent = 0;
   timer.textContent = 60;
   timeInput.value = 60;
   let paused = false;
 
+  const play = (sound) => {
+    sound.play();
+    sound.currentTime = 0.0;
+  }
+
+  const changeTheme = () => {
+    document.body.classList.toggle('light');
+  }
+
   const playTimer = () => {
-    playAudioStart();
+    play(audioStart);
     if (!paused) timer.textContent = timeInput.value;
 
     if (paused) {
@@ -35,7 +43,7 @@ export const timerVision = () => {
       }
 
       if (timer.textContent == Math.ceil(timeInput.value / 2)) {
-        playAudioEnd();
+        play(audioEnd);
       }
 
       if (timer.textContent == 0) {
@@ -45,18 +53,18 @@ export const timerVision = () => {
 
         if (iterations.textContent > 0) {
           iterations.textContent--;
-          playAudioEnd();
+          play(audioEnd);
         }
 
         if (iterations.textContent == Math.ceil(timeInput.value / 2)) {
-          playAudioHalfTime();
+          play(audioHalfTime);
         }
         
         if (iterations.textContent == 0) {
           playBtn.disabled = true;
           pauseBtn.disabled = true;
           iterations.textContent = 'Конец';
-          playAudioFinish();
+          play(audioFinish);
         }
       }
       
@@ -68,30 +76,6 @@ export const timerVision = () => {
       });
     }, 1000);
   };
-
-  const playAudioStart = () => {
-    audioStart.play();
-    audioStart.currentTime = 0.0;
-  };
-
-  const playAudioEnd = () => {
-    audio.play();
-    audio.currentTime = 0.0;
-  };
-
-  const playAudioHalfTime = () => {
-    audioHalfTime.play();
-    audioHalfTime.currentTime = 0.0;
-  }
-  
-  const playAudioFinish = () => {
-    audioFinish.play();
-    audioFinish.currentTime = 0.0;
-  };
-  
-  const changeTheme = () => {
-    document.body.classList.toggle('light');
-  }
 
   iterationsInput.addEventListener('change', () => {iterations.textContent = iterationsInput.value});
   playBtn.addEventListener('click', playTimer);
