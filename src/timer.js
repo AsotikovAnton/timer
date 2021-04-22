@@ -56,7 +56,7 @@ export const timerVision = () => {
           play(audioEnd);
         }
 
-        if (iterations.textContent == Math.ceil(timeInput.value / 2)) {
+        if (iterations.textContent == Math.ceil(iterationsInput.value / 2)) {
           play(audioHalfTime);
         }
         
